@@ -5,7 +5,17 @@ import { Badge } from "@/components/ui/badge";
 import { CourseHeader } from "@/components/CourseHeader";
 import { CourseOverview } from "@/components/CourseOverview";
 import { WeekCard } from "@/components/WeekCard";
-import { courseInfo, learningObjectives, units } from "@/data/courseData";
+import { AssessmentBreakdown } from "@/components/AssessmentBreakdown";
+import { ToolsAndPlatforms } from "@/components/ToolsAndPlatforms";
+import { ProjectIdeas } from "@/components/ProjectIdeas";
+import {
+  courseInfo,
+  learningObjectives,
+  units,
+  assessmentBreakdown,
+  toolsAndPlatforms,
+  projectIdeas,
+} from "@/data/courseData";
 
 function App() {
   return (
@@ -84,6 +94,15 @@ function App() {
             ))}
           </div>
         </motion.div>
+
+        {/* Assessment Breakdown */}
+        <AssessmentBreakdown assessmentItems={assessmentBreakdown} />
+
+        {/* Tools and Platforms */}
+        <ToolsAndPlatforms tools={toolsAndPlatforms} />
+
+        {/* Project Ideas */}
+        <ProjectIdeas projectIdeas={projectIdeas} />
 
         {/* Footer */}
         <motion.footer

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Network Analysis I (SNA-I) - Course Outline</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header fade-in">
+        <h1>
+          <i class="fas fa-network-wired"></i> Social Network Analysis I (SNA-I)
+        </h1>
+        <div class="course-info">
+          <div class="info-card">
+            <i class="fas fa-user-tie"></i>
+            <strong>Instructor</strong><br />
+            Dr. Mudassir Shabbir
+          </div>
+          <div class="info-card">
+            <i class="fas fa-calendar-alt"></i>
+            <strong>Semester</strong><br />
+            Fall 2025
+          </div>
+          <div class="info-card">
+            <i class="fas fa-graduation-cap"></i>
+            <strong>Level</strong><br />
+            300-level Undergraduate
+          </div>
+        </div>
+      </header>
+
+      <div class="card fade-in">
+        <div class="card-header">
+          <i class="fas fa-info-circle"></i>
+          <h2>Course Overview</h2>
+        </div>
+        <div class="disclaimer">
+          <i class="fas fa-exclamation-circle"></i>
+          <span
+            >Please note: Course details are tentative and subject to change
+            based on enrollment and scheduling requirements.</span
+          >
+        </div>
+        <div class="overview-grid">
+          <div class="overview-item">
+            <i
+              class="fas fa-graduation-cap"
+              style="color: var(--secondary)"
+            ></i>
+            <div class="overview-item-content">
+              <strong>Level</strong>
+              <span>300-level undergraduate course</span>
+            </div>
+          </div>
+          <div class="overview-item">
+            <i class="fas fa-star" style="color: var(--warning)"></i>
+            <div class="overview-item-content">
+              <strong>Credits</strong>
+              <span>3 credit hours</span>
+            </div>
+          </div>
+          <div class="overview-item">
+            <i
+              class="fas fa-exclamation-triangle"
+              style="color: var(--accent)"
+            ></i>
+            <div class="overview-item-content">
+              <strong>Prerequisite</strong>
+              <span>Algorithms course with grade B- or higher</span>
+            </div>
+          </div>
+          <div class="overview-item">
+            <i class="fas fa-user-check" style="color: var(--success)"></i>
+            <div class="overview-item-content">
+              <strong>Eligibility</strong>
+              <span
+                >Open to undergraduate students. Graduate students may attend
+                informally but cannot take for credit.</span
+              >
+            </div>
+          </div>
+          <div class="overview-item">
+            <i class="fas fa-clock" style="color: var(--primary)"></i>
+            <div class="overview-item-content">
+              <strong>Schedule</strong>
+              <span>Lectures within 11:00 AM – 2:00 PM window</span>
+            </div>
+          </div>
+          <div class="overview-item">
+            <i class="fas fa-laptop-code" style="color: var(--secondary)"></i>
+            <div class="overview-item-content">
+              <strong>Format</strong>
+              <span
+                >Hands-on lectures, labs, homework assignments, group
+                activities, and final project</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card objectives fade-in">
+        <div class="card-header">
+          <i class="fas fa-target"></i>
+          <h2>Learning Objectives</h2>
+        </div>
+        <p>By the end of the course, students will:</p>
+        <ul>
+          <li>
+            Understand and apply core concepts in supervised and unsupervised
+            machine learning
+          </li>
+          <li>
+            Gain proficiency in Python for machine learning and data analysis
+          </li>
+          <li>
+            Model, analyze, and visualize real-world networks using graph theory
+          </li>
+          <li>
+            Apply machine learning techniques to network problems such as link
+            prediction and node classification
+          </li>
+          <li>
+            Collaborate on applied projects and communicate results effectively
+          </li>
+        </ul>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-header">
+          <i class="fas fa-calendar-week"></i>
+          <h2>Weekly Breakdown</h2>
+        </div>
+        <div class="disclaimer">
+          <i class="fas fa-calendar-times"></i>
+          <span
+            >Weekly schedule is tentative and may be adjusted throughout the
+            semester to accommodate learning pace and student needs.</span
+          >
+        </div>
+
+        <div class="unit-header">
+          <i class="fas fa-robot"></i> Unit I: Machine Learning Foundations
+          (Weeks 1-6)
+        </div>
+
+        <div class="week-container">
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-play"></i>
+              Week 1: Python Fundamentals & Data Handling
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Python review, Jupyter/Colab setup</li>
+                <li>Using pandas for data cleaning and summaries</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Clean and summarize a
+                  real-world dataset
+                </li>
+                <li class="homework">
+                  <i class="fas fa-edit"></i> Homework 1: Explore and clean a
+                  dataset; compute stats and visualize
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-brain"></i>
+              Week 2: Supervised Learning -- Classification
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Train/test splits, decision trees, k-NN</li>
+                <li>Accuracy, precision, recall, F1 score</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Build classifiers on Titanic
+                  or similar
+                </li>
+                <li class="homework">
+                  <i class="fas fa-edit"></i> Homework 2: Compare classifiers on
+                  binary classification dataset
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-chart-line"></i>
+              Week 3: Regression & Feature Engineering
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Linear regression, polynomial regression</li>
+                <li>Feature scaling, encoding, binning</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Predict housing prices with
+                  engineered features
+                </li>
+                <li class="homework">
+                  <i class="fas fa-edit"></i> Homework 3: Train regressor with
+                  3+ engineered features
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-cogs"></i>
+              Week 4: Model Evaluation & Pipelines
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Cross-validation, bias-variance tradeoff</li>
+                <li>sklearn pipelines, reusable components</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Build and test
+                  classification pipelines
+                </li>
+                <li class="homework">
+                  <i class="fas fa-edit"></i> Homework 4: Design full pipeline
+                  with evaluation
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-object-group"></i>
+              Week 5: Clustering & Unsupervised Learning
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>k-means, hierarchical clustering, silhouette score</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Cluster student or consumer
+                  datasets
+                </li>
+                <li class="group-activity">
+                  <i class="fas fa-users"></i> Group Activity: Present
+                  clustering results
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-compress-arrows-alt"></i>
+              Week 6: Dimensionality Reduction
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>PCA, t-SNE, embeddings intro</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Visualize projections in 2D
+                </li>
+                <li style="color: var(--secondary)">
+                  <i class="fas fa-question-circle"></i> Optional Homework 5:
+                  Apply dimensionality reduction
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="unit-header">
+          <i class="fas fa-project-diagram"></i> Unit II: Network Analysis and
+          Graph ML (Weeks 7-14)
+        </div>
+
+        <div class="week-container">
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-sitemap"></i>
+              Week 7: Introduction to Graphs
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Graph terminology, adjacency matrix/list, edge lists</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Load and visualize networks
+                  in networkx
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-bullseye"></i>
+              Week 8: Centrality Measures
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Degree, betweenness, closeness, eigenvector</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Analyze real-world graphs
+                  for key nodes
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-users"></i>
+              Week 9: Communities & Subgraphs
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Louvain, label propagation, modularity</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Community detection in ego
+                  networks
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-virus"></i>
+              Week 10: Network Diffusion
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>SI/SIR models, cascade simulations</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Simulate influence spread in
+                  social graphs
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-link"></i>
+              Week 11: Link Prediction & Node Classification
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Heuristics (Jaccard, Adamic-Adar), ML classifiers</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Predict edges using logistic
+                  regression
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-history"></i>
+              Week 12: Dynamic Networks
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Temporal graphs, snapshots, growth modeling</li>
+                <li class="lab">
+                  <i class="fas fa-flask"></i> Lab: Analyze change in
+                  collaboration/email networks
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="week-card">
+            <div class="week-title">
+              <i class="fas fa-presentation"></i>
+              Weeks 13-14: Final Projects
+            </div>
+            <div class="week-content">
+              <ul>
+                <li>Student presentations and demos</li>
+                <li style="color: var(--primary)">
+                  <i class="fas fa-file-alt"></i> Deliverables: Code notebook,
+                  slides, 2-page summary
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-header">
+          <i class="fas fa-chart-pie"></i>
+          <h2>Assessment Breakdown</h2>
+        </div>
+        <div class="disclaimer">
+          <i class="fas fa-balance-scale"></i>
+          <span
+            >Assessment weights are preliminary and can be refined till the end
+            of first week of classes.</span
+          >
+        </div>
+        <table class="assessment-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <i class="fas fa-edit" style="color: var(--warning)"></i>
+                Homework Assignments (Weeks 1-5)
+              </td>
+              <td class="weight" style="color: var(--warning)">35%</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-flask" style="color: var(--accent)"></i> Labs
+                and Participation
+              </td>
+              <td class="weight" style="color: var(--accent)">15%</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-users" style="color: var(--success)"></i> Group
+                Activities (Weeks 5, 9)
+              </td>
+              <td class="weight" style="color: var(--success)">10%</td>
+            </tr>
+            <tr>
+              <td>
+                <i
+                  class="fas fa-project-diagram"
+                  style="color: var(--primary)"
+                ></i>
+                Final Project
+              </td>
+              <td class="weight" style="color: var(--primary)">30%</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-comments" style="color: var(--secondary)"></i>
+                Peer Review/Reflection
+              </td>
+              <td class="weight" style="color: var(--secondary)">10%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card fade-in">
+        <div class="card-header">
+          <i class="fas fa-tools"></i>
+          <h2>Tools and Platforms</h2>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-category">
+            <h4><i class="fab fa-python"></i> Core Libraries</h4>
+            <ul class="tool-list">
+              <li>
+                <i class="fas fa-database" style="color: var(--success)"></i>
+                pandas
+              </li>
+              <li>
+                <i class="fas fa-chart-line" style="color: var(--accent)"></i>
+                matplotlib
+              </li>
+              <li>
+                <i class="fas fa-chart-area" style="color: var(--warning)"></i>
+                seaborn
+              </li>
+              <li>
+                <i class="fas fa-robot" style="color: var(--primary)"></i>
+                scikit-learn
+              </li>
+              <li>
+                <i
+                  class="fas fa-project-diagram"
+                  style="color: var(--secondary)"
+                ></i>
+                networkx
+              </li>
+            </ul>
+          </div>
+          <div class="tool-category">
+            <h4><i class="fas fa-laptop-code"></i> Platforms</h4>
+            <ul class="tool-list">
+              <li>
+                <i class="fab fa-google" style="color: var(--warning)"></i>
+                Google Colab
+              </li>
+              <li>
+                <i class="fas fa-laptop-code" style="color: var(--accent)"></i>
+                Jupyter Notebooks
+              </li>
+            </ul>
+          </div>
+          <div class="tool-category">
+            <h4><i class="fas fa-plus-circle"></i> Optional Tools</h4>
+            <ul class="tool-list">
+              <li>
+                <i class="fas fa-eye" style="color: var(--dark)"></i> Gephi
+              </li>
+              <li>
+                <i class="fas fa-brain" style="color: var(--accent)"></i>
+                PyTorch Geometric
+              </li>
+              <li>
+                <i class="fas fa-database" style="color: var(--success)"></i>
+                HuggingFace Datasets
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card project-ideas fade-in">
+        <div class="card-header">
+          <i class="fas fa-lightbulb"></i>
+          <h2>Example Project Ideas</h2>
+        </div>
+        <ul>
+          <li>
+            <i class="fab fa-twitter" style="color: #1da1f2"></i>
+            Modeling diffusion of memes in Twitter networks
+          </li>
+          <li>
+            <i class="fab fa-github" style="color: #333"></i>
+            Link prediction in a GitHub or DBLP collaboration graph
+          </li>
+          <li>
+            <i class="fab fa-discord" style="color: #7289da"></i>
+            Detecting clusters in Discord server graphs
+          </li>
+          <li>
+            <i class="fas fa-quote-left" style="color: var(--success)"></i>
+            Visualizing temporal evolution of a citation network
+          </li>
+          <li>
+            <i class="fas fa-users" style="color: var(--primary)"></i>
+            Combining PCA and community detection for student grouping
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      // Add fade-in animation to cards as they come into view
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = "0.1s";
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Add hover effects to week cards
+      document.querySelectorAll(".week-card").forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          card.style.borderTopColor = "var(--secondary)";
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.borderTopColor = "var(--primary)";
+        });
+      });
+    </script>
+  </body>
+</html>

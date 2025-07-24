@@ -1,0 +1,500 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% Code listing settings
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{gray!5},
+    frame=single,
+    breaklines=true,
+    captionpos=b
+}
+
+\title[SNA-I Week 1]{Social Network Analysis I\\Week 1: Python Fundamentals \& Data Handling}
+\author{Dr. Mudassir Shabbir}
+\institute{Fall 2025}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Course Introduction}
+
+\begin{frame}
+\frametitle{Welcome to Social Network Analysis I}
+\begin{itemize}
+    \item \textbf{Course Goal:} Learn to analyze and model real-world networks using machine learning
+    \item \textbf{Format:} Hands-on lectures, labs, homework, group activities, final project
+    \item \textbf{Prerequisites:} Algorithms course (B- or higher)
+    \item \textbf{Credits:} 3 (300-level undergraduate)
+\end{itemize}
+
+\vspace{1em}
+\begin{block}{What We'll Cover}
+\begin{itemize}
+    \item Unit I (Weeks 1-6): Machine Learning Foundations
+    \item Unit II (Weeks 7-14): Network Analysis \& Graph ML
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learning Objectives}
+By the end of this course, you will:
+\begin{enumerate}
+    \item Understand core concepts in supervised and unsupervised ML
+    \item Gain proficiency in Python for ML and data analysis
+    \item Model, analyze, and visualize real-world networks
+    \item Apply ML techniques to network problems (link prediction, node classification)
+    \item Collaborate on applied projects and communicate results
+\end{enumerate}
+
+\vspace{1em}
+\begin{alertblock}{Today's Focus}
+Building the foundation: Python skills and data handling with pandas
+\end{alertblock}
+\end{frame}
+
+\section{Python Environment Setup}
+
+\begin{frame}
+\frametitle{Development Environment Options}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Google Colab (Recommended)}
+\begin{itemize}
+    \item Free, cloud-based
+    \item Pre-installed libraries
+    \item Easy sharing and collaboration
+    \item GPU/TPU access available
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Local Jupyter Notebooks}
+\begin{itemize}
+    \item Full control over environment
+    \item Works offline
+    \item Better for large datasets
+    \item Requires setup
+\end{itemize}
+\end{column}
+\end{columns}
+
+\vspace{1em}
+\begin{block}{Getting Started with Colab}
+\begin{enumerate}
+    \item Go to \url{https://colab.research.google.com}
+    \item Sign in with Google account
+    \item Create new notebook
+    \item Start coding!
+\end{enumerate}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Essential Python Libraries for This Course}
+\begin{lstlisting}[caption=Installing Required Libraries]
+# In Colab, most libraries are pre-installed
+# For local installation:
+pip install pandas numpy matplotlib seaborn scikit-learn networkx
+
+# Import statements we'll use frequently
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import networkx as nx
+\end{lstlisting}
+
+\begin{alertblock}{Pro Tip}
+Always import libraries at the top of your notebook for clarity and reproducibility
+\end{alertblock}
+\end{frame}
+
+\section{Python Review}
+
+\begin{frame}[fragile]
+\frametitle{Python Basics Refresher}
+\begin{lstlisting}[caption=Data Types and Structures]
+# Basic data types
+number = 42
+text = "Social Network Analysis"
+is_fun = True
+
+# Lists and dictionaries
+students = ["Alice", "Bob", "Charlie"]
+grades = {"Alice": 95, "Bob": 87, "Charlie": 92}
+
+# List comprehensions (very useful!)
+squares = [x**2 for x in range(1, 6)]
+high_grades = [name for name, grade in grades.items() if grade > 90]
+
+print(f"High achievers: {high_grades}")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Functions and Control Flow}
+\begin{lstlisting}[caption=Essential Python Patterns]
+def analyze_network_stats(connections):
+    """Calculate basic network statistics."""
+    total_connections = len(connections)
+    unique_users = len(set(connections))
+    
+    if total_connections == 0:
+        return "No connections found"
+    
+    density = unique_users / total_connections
+    return {
+        'total': total_connections,
+        'unique_users': unique_users,
+        'density': density
+    }
+
+# Example usage
+connections = ['Alice-Bob', 'Bob-Charlie', 'Alice-Charlie']
+stats = analyze_network_stats(connections)
+print(stats)
+\end{lstlisting}
+\end{frame}
+
+\section{Introduction to Pandas}
+
+\begin{frame}
+\frametitle{Why Pandas for Network Analysis?}
+\begin{itemize}
+    \item \textbf{Data Import:} Read CSV, JSON, Excel files easily
+    \item \textbf{Data Cleaning:} Handle missing values, duplicates, inconsistencies
+    \item \textbf{Data Transformation:} Filter, group, aggregate, pivot
+    \item \textbf{Network Representation:} Edge lists, adjacency matrices
+    \item \textbf{Integration:} Works seamlessly with NetworkX, scikit-learn
+\end{itemize}
+
+\vspace{1em}
+\begin{block}{Key Pandas Objects}
+\begin{itemize}
+    \item \textbf{Series:} 1D labeled array (like a column)
+    \item \textbf{DataFrame:} 2D labeled data structure (like a spreadsheet)
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Creating DataFrames}
+\begin{lstlisting}[caption=Different Ways to Create DataFrames]
+import pandas as pd
+
+# From dictionary
+social_data = {
+    'user_id': [1, 2, 3, 4, 5],
+    'username': ['alice', 'bob', 'charlie', 'diana', 'eve'],
+    'followers': [150, 89, 203, 45, 312],
+    'following': [98, 156, 87, 178, 92],
+    'posts': [45, 23, 67, 12, 89]
+}
+df = pd.DataFrame(social_data)
+
+# From CSV file (most common in real projects)
+# df = pd.read_csv('social_network_data.csv')
+
+# Display basic info
+print(df.head())
+print(f"\nDataFrame shape: {df.shape}")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Exploration Essentials}
+\begin{lstlisting}[caption=Quick Data Overview]
+# Basic information about the dataset
+print(df.info())
+print("\n" + "="*40)
+print(df.describe())
+
+# Check for missing values
+print(f"\nMissing values:\n{df.isnull().sum()}")
+
+# Quick statistics
+print(f"\nAverage followers: {df['followers'].mean():.1f}")
+print(f"Most active user: {df.loc[df['posts'].idxmax(), 'username']}")
+
+# Data types
+print(f"\nColumn types:\n{df.dtypes}")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Selection and Filtering}
+\begin{lstlisting}[caption=Selecting and Filtering Data]
+# Select specific columns
+user_metrics = df[['username', 'followers', 'posts']]
+
+# Filter rows based on conditions
+popular_users = df[df['followers'] > 100]
+active_users = df[df['posts'] > 50]
+
+# Multiple conditions
+influential = df[(df['followers'] > 100) & (df['posts'] > 30)]
+
+# Select specific rows and columns
+top_user = df.loc[df['followers'].idxmax(), ['username', 'followers']]
+
+print(f"Most followed user: {top_user}")
+print(f"\nInfluential users:\n{influential[['username', 'followers', 'posts']]}")
+\end{lstlisting}
+\end{frame}
+
+\section{Data Cleaning Fundamentals}
+
+\begin{frame}[fragile]
+\frametitle{Handling Missing Data}
+\begin{lstlisting}[caption=Common Missing Data Scenarios]
+# Create sample data with missing values
+import numpy as np
+
+messy_data = {
+    'user_id': [1, 2, 3, 4, 5, 6],
+    'username': ['alice', 'bob', None, 'diana', 'eve', 'frank'],
+    'followers': [150, np.nan, 203, 45, 312, np.nan],
+    'engagement_rate': [0.05, 0.03, np.nan, 0.08, 0.04, 0.06]
+}
+messy_df = pd.DataFrame(messy_data)
+
+# Check missing data
+print("Missing data overview:")
+print(messy_df.isnull().sum())
+
+# Different strategies
+clean_df = messy_df.dropna()  # Remove rows with any missing values
+filled_df = messy_df.fillna(messy_df.mean())  # Fill with mean
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Type Conversion and Validation}
+\begin{lstlisting}[caption=Ensuring Correct Data Types]
+# Example: Converting string dates to datetime
+network_events = pd.DataFrame({
+    'event_date': ['2025-01-15', '2025-01-16', '2025-01-17'],
+    'user_id': ['123', '456', '789'],  # Should be integers
+    'action': ['like', 'share', 'comment']
+})
+
+# Convert data types
+network_events['event_date'] = pd.to_datetime(network_events['event_date'])
+network_events['user_id'] = network_events['user_id'].astype(int)
+
+# Validate data
+print("After type conversion:")
+print(network_events.dtypes)
+print(network_events.head())
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Removing Duplicates and Outliers}
+\begin{lstlisting}[caption=Data Quality Checks]
+# Sample data with duplicates
+user_interactions = pd.DataFrame({
+    'from_user': ['alice', 'bob', 'alice', 'charlie', 'alice'],
+    'to_user': ['bob', 'charlie', 'bob', 'alice', 'diana'],
+    'interaction_type': ['like', 'comment', 'like', 'share', 'follow']
+})
+
+# Remove duplicate interactions
+unique_interactions = user_interactions.drop_duplicates()
+
+# For numerical data - detect outliers using IQR
+Q1 = df['followers'].quantile(0.25)
+Q3 = df['followers'].quantile(0.75)
+IQR = Q3 - Q1
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+# Filter outliers
+clean_followers = df[(df['followers'] >= lower_bound) & 
+                    (df['followers'] <= upper_bound)]
+\end{lstlisting}
+\end{frame}
+
+\section{Data Summarization and Aggregation}
+
+\begin{frame}[fragile]
+\frametitle{Grouping and Aggregation}
+\begin{lstlisting}[caption=Summarizing Data by Groups]
+# Extended dataset with categories
+extended_df = df.copy()
+extended_df['account_type'] = ['personal', 'business', 'personal', 
+                              'influencer', 'business']
+
+# Group by account type and calculate statistics
+account_stats = extended_df.groupby('account_type').agg({
+    'followers': ['mean', 'max', 'count'],
+    'posts': 'sum',
+    'following': 'mean'
+}).round(2)
+
+print("Statistics by Account Type:")
+print(account_stats)
+
+# Calculate engagement ratio
+extended_df['engagement_ratio'] = extended_df['followers'] / extended_df['following']
+print(f"\nAverage engagement ratio: {extended_df['engagement_ratio'].mean():.2f}")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pivot Tables for Network Analysis}
+\begin{lstlisting}[caption=Creating Pivot Tables]
+# Sample interaction data
+interactions = pd.DataFrame({
+    'from_user': ['alice', 'alice', 'bob', 'bob', 'charlie', 'charlie'],
+    'to_user': ['bob', 'charlie', 'alice', 'charlie', 'alice', 'bob'],
+    'interaction_type': ['like', 'comment', 'share', 'like', 'comment', 'like'],
+    'timestamp': pd.date_range('2025-01-01', periods=6, freq='D')
+})
+
+# Create pivot table to see interaction patterns
+interaction_matrix = interactions.pivot_table(
+    index='from_user',
+    columns='to_user',
+    values='interaction_type',
+    aggfunc='count',
+    fill_value=0
+)
+
+print("Interaction Matrix:")
+print(interaction_matrix)
+\end{lstlisting}
+\end{frame}
+
+\section{Lab Preview}
+
+\begin{frame}
+\frametitle{Today's Lab: Clean and Summarize Real Data}
+\textbf{Objective:} Apply what we've learned to a real-world dataset
+
+\begin{block}{Lab Tasks}
+\begin{enumerate}
+    \item Load a social network dataset (provided)
+    \item Explore the data structure and identify issues
+    \item Clean the data (handle missing values, duplicates, outliers)
+    \item Create summary statistics and visualizations
+    \item Generate insights about the network structure
+\end{enumerate}
+\end{block}
+
+\textbf{Dataset:} Twitter interaction data with user profiles, tweets, and engagement metrics
+
+\textbf{Deliverable:} Jupyter notebook with clean code, comments, and insights
+\end{frame}
+
+\begin{frame}
+\frametitle{Homework 1 Overview}
+\textbf{Due:} Next week before class
+
+\textbf{Task:} Explore and clean a dataset from UCI ML Repository or Kaggle
+
+\begin{block}{Requirements}
+\begin{itemize}
+    \item Choose a dataset with network/social components (recommendations provided)
+    \item Perform comprehensive data cleaning and exploration
+    \item Compute at least 5 meaningful statistics
+    \item Create 3-4 visualizations
+    \item Write a 1-page summary of findings and data quality issues
+\end{itemize}
+\end{block}
+
+\textbf{Submission:} Jupyter notebook + PDF summary via course portal
+\end{frame}
+
+\section{Next Steps}
+
+\begin{frame}
+\frametitle{Looking Ahead: Week 2}
+\textbf{Topic:} Supervised Learning - Classification
+
+\begin{itemize}
+    \item Train/test splits and cross-validation
+    \item Decision trees and k-nearest neighbors
+    \item Evaluation metrics: accuracy, precision, recall, F1-score
+    \item Building classifiers for network problems
+\end{itemize}
+
+\vspace{1em}
+\begin{block}{Preparation}
+\begin{itemize}
+    \item Complete Homework 1
+    \item Review linear algebra basics (vectors, matrices)
+    \item Familiarize yourself with scikit-learn documentation
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Resources and Getting Help}
+\textbf{Documentation:}
+\begin{itemize}
+    \item Pandas: \url{https://pandas.pydata.org/docs/}
+    \item NumPy: \url{https://numpy.org/doc/}
+    \item Matplotlib: \url{https://matplotlib.org/}
+    \item Seaborn: \url{https://seaborn.pydata.org/}
+\end{itemize}
+
+\textbf{Getting Help:}
+\begin{itemize}
+    \item Office hours: [Schedule TBD]
+    \item Course discussion forum
+    \item Study groups (encouraged!)
+    \item Stack Overflow for technical questions
+\end{itemize}
+
+\textbf{Best Practices:}
+\begin{itemize}
+    \item Comment your code thoroughly
+    \item Use meaningful variable names
+    \item Test your code with small examples first
+    \item Save your work frequently!
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questions?}
+\begin{center}
+\Large Thank you!\\
+\vspace{1em}
+Next: Lab session - hands-on data cleaning practice
+
+\vspace{2em}
+\textbf{Contact:} [email@university.edu]\\
+\textbf{Office Hours:} [Days and times]
+\end{center}
+\end{frame}
+
+\end{document}

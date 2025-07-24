@@ -1,0 +1,354 @@
+\documentclass[11pt,a4paper]{article}
+
+% Modern packages for styling
+\usepackage[margin=0.8in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% Colors and graphics
+\usepackage[svgnames,table]{xcolor}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\tcbuselibrary{most}
+\usepackage{fontawesome5}
+
+% Typography and layout
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multicol}
+
+% Links
+\usepackage[colorlinks=true,linkcolor=DarkBlue,urlcolor=DarkBlue,citecolor=DarkBlue]{hyperref}
+
+% Define modern color palette
+\definecolor{primary}{HTML}{2C3E50}     % Dark blue-gray
+\definecolor{secondary}{HTML}{3498DB}   % Bright blue
+\definecolor{accent}{HTML}{E74C3C}      % Red
+\definecolor{success}{HTML}{27AE60}     % Green
+\definecolor{warning}{HTML}{F39C12}     % Orange
+\definecolor{light}{HTML}{ECF0F1}       % Light gray
+\definecolor{dark}{HTML}{2C3E50}        % Dark
+
+% Custom title format
+\titleformat{\section}[block]
+{\Large\bfseries\color{primary}}
+{\thesection}{1em}{}
+[\color{secondary}\titlerule]
+
+\titleformat{\subsection}[block]
+{\large\bfseries\color{secondary}}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}[block]
+{\normalsize\bfseries\color{dark}}
+{\thesubsubsection}{1em}{}
+
+% Custom boxes for different content types
+\newtcolorbox{infobox}[1][]{
+  colback=light,
+  colframe=secondary,
+  fonttitle=\bfseries,
+  coltitle=white,
+  colbacktitle=secondary,
+  enhanced,
+  attach boxed title to top left,
+  boxed title style={skin=enhancedfirst jigsaw,arc=1mm},
+  arc=2mm,
+  #1
+}
+
+\newtcolorbox{objectivebox}[1][]{
+  colback=success!10,
+  colframe=success,
+  fonttitle=\bfseries,
+  coltitle=white,
+  colbacktitle=success,
+  enhanced,
+  attach boxed title to top left,
+  boxed title style={skin=enhancedfirst jigsaw,arc=1mm},
+  arc=2mm,
+  #1
+}
+
+\newtcolorbox{weekbox}[1][]{
+  colback=white,
+  colframe=primary,
+  fonttitle=\bfseries,
+  coltitle=white,
+  colbacktitle=primary,
+  enhanced,
+  attach boxed title to top left,
+  boxed title style={skin=enhancedfirst jigsaw,arc=1mm},
+  arc=2mm,
+  drop shadow,
+  #1
+}
+
+% Custom itemize with safe icons
+\setlist[itemize,1]{label=\textcolor{secondary}{$\triangleright$}, leftmargin=1.5em}
+\setlist[itemize,2]{label=\textcolor{accent}{$\bullet$}, leftmargin=2em}
+
+% Header design
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+  
+  % Course title with modern styling
+  \begin{tcolorbox}[
+    colback=primary,
+    coltext=white,
+    halign=center,
+    valign=center,
+    arc=5mm,
+    height=3cm,
+    fontupper=\Large\bfseries
+  ]
+    {\Huge \@title}
+  \end{tcolorbox}
+  
+  \vskip 1em
+  
+  % Course info in columns
+  \begin{tcolorbox}[
+    colback=light,
+    colframe=secondary,
+    arc=3mm,
+    halign=center
+  ]
+    \begin{multicols}{3}
+      \centering
+      \textcolor{primary}{\faUser\ \textbf{Instructor}} \\
+      \@author \\[0.5em]
+      
+      \columnbreak
+      
+      \textcolor{primary}{\faCalendar\ \textbf{Semester}} \\
+      \@date \\[0.5em]
+      
+      \columnbreak
+      
+      \textcolor{primary}{\faGraduationCap\ \textbf{Level}} \\
+      300-level Undergraduate \\
+    \end{multicols}
+  \end{tcolorbox}
+  
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+\title{Social Network Analysis I (SNA-I)}
+\author{Dr. Mudassir Shabbir}
+\date{Fall 2025}
+
+\begin{document}
+
+\maketitle
+
+% Course Overview
+\begin{infobox}[title={\faInfo\ Course Overview}]
+\begin{itemize}[leftmargin=0em]
+  \item[\textcolor{secondary}{\faGraduationCap}] \textbf{Level:} 300-level undergraduate
+  \item[\textcolor{secondary}{\faStar}] \textbf{Credits:} 3
+  \item[\textcolor{warning}{\faExclamation}] \textbf{Prerequisite:} Algorithms course with grade B- or higher
+  \item[\textcolor{success}{\faCheck}] \textbf{Eligibility:} Open to undergraduate students. Graduate students may attend informally but cannot take the course for credit.
+  \item[\textcolor{secondary}{\faClock}] \textbf{Schedule:} Lectures within 11:00 AM -- 2:00 PM window
+  \item[\textcolor{accent}{\faLaptop}] \textbf{Format:} Hands-on lectures, labs, homeworks, group activities, and final project
+\end{itemize}
+\end{infobox}
+
+\vspace{1em}
+
+% Learning Objectives
+\begin{objectivebox}[title={\faBullseye\ Learning Objectives}]
+By the end of the course, students will:
+\begin{itemize}
+  \item Understand and apply core concepts in supervised and unsupervised machine learning
+  \item Gain proficiency in Python for machine learning and data analysis
+  \item Model, analyze, and visualize real-world networks using graph theory
+  \item Apply machine learning techniques to network problems such as link prediction and node classification
+  \item Collaborate on applied projects and communicate results effectively
+\end{itemize}
+\end{objectivebox}
+
+\section*{\faCalendar\ Weekly Breakdown}
+
+\subsection*{\textcolor{secondary}{\faRobot} Unit I: Machine Learning Foundations (Weeks 1--6)}
+
+\begin{weekbox}[title={Week 1: Python Fundamentals \& Data Handling}]
+\begin{itemize}
+  \item Python review, Jupyter/Colab setup
+  \item Using \texttt{pandas} for data cleaning and summaries
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Clean and summarize a real-world dataset
+  \item \textcolor{warning}{\faEdit\ \textbf{Homework 1:}} Explore and clean a dataset (UCI/Kaggle); compute stats and visualize
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 2: Supervised Learning -- Classification}]
+\begin{itemize}
+  \item Train/test splits, decision trees, k-NN
+  \item Accuracy, precision, recall, F1 score
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Build classifiers on Titanic or similar
+  \item \textcolor{warning}{\faEdit\ \textbf{Homework 2:}} Compare classifiers on a binary classification dataset, include visualizations
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 3: Regression \& Feature Engineering}]
+\begin{itemize}
+  \item Linear regression, polynomial regression
+  \item Feature scaling, encoding, binning
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Predict housing prices with engineered features
+  \item \textcolor{warning}{\faEdit\ \textbf{Homework 3:}} Train a regressor with at least 3 engineered features; evaluate performance
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 4: Model Evaluation \& Pipelines}]
+\begin{itemize}
+  \item Cross-validation, bias-variance tradeoff
+  \item \texttt{sklearn} pipelines, reusable components
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Build and test classification pipelines
+  \item \textcolor{warning}{\faEdit\ \textbf{Homework 4:}} Design a full pipeline with evaluation and visual reporting
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 5: Clustering \& Unsupervised Learning}]
+\begin{itemize}
+  \item k-means, hierarchical clustering, silhouette score
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Cluster student or consumer datasets
+  \item \textcolor{success}{\faUsers\ \textbf{Group Activity:}} Present clustering results and interpretations
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 6: Dimensionality Reduction}]
+\begin{itemize}
+  \item PCA, t-SNE, embeddings intro
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Visualize projections in 2D
+  \item \textcolor{secondary}{\faQuestion\ \textbf{Optional Homework 5:}} Apply dimensionality reduction and cluster/visualize results
+\end{itemize}
+\end{weekbox}
+
+\subsection*{\textcolor{secondary}{\faNetworkWired} Unit II: Network Analysis and Graph ML (Weeks 7--14)}
+
+\begin{weekbox}[title={Week 7: Introduction to Graphs}]
+\begin{itemize}
+  \item Graph terminology, adjacency matrix/list, edge lists
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Load and visualize networks in \texttt{networkx}
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 8: Centrality Measures}]
+\begin{itemize}
+  \item Degree, betweenness, closeness, eigenvector
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Analyze real-world graphs for key nodes
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 9: Communities \& Subgraphs}]
+\begin{itemize}
+  \item Louvain, label propagation, modularity
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Community detection in ego networks
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 10: Network Diffusion}]
+\begin{itemize}
+  \item SI/SIR models, cascade simulations
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Simulate influence spread in social graphs
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 11: Link Prediction \& Node Classification}]
+\begin{itemize}
+  \item Heuristics (Jaccard, Adamic-Adar), ML classifiers
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Predict edges using logistic regression
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Week 12: Dynamic Networks}]
+\begin{itemize}
+  \item Temporal graphs, snapshots, growth modeling
+  \item \textcolor{accent}{\faFlask\ \textbf{Lab:}} Analyze change over time in collaboration/email networks
+\end{itemize}
+\end{weekbox}
+
+\begin{weekbox}[title={Weeks 13--14: Final Projects}]
+\begin{itemize}
+  \item Student presentations and demos
+  \item \textcolor{primary}{\faFile\ \textbf{Deliverables:}} Code notebook, slides, 2-page summary
+\end{itemize}
+\end{weekbox}
+
+\section*{\faChartPie\ Assessment Breakdown}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{0.8\textwidth}{X c}
+\toprule
+\textbf{Component} & \textbf{Weight} \\
+\midrule
+\textcolor{warning}{\faEdit}\ Homework Assignments (Weeks 1--5) & \textcolor{warning}{\textbf{35\%}} \\
+\textcolor{accent}{\faFlask}\ Labs and Participation & \textcolor{accent}{\textbf{15\%}} \\
+\textcolor{success}{\faUsers}\ Group Activities (Weeks 5, 9) & \textcolor{success}{\textbf{10\%}} \\
+\textcolor{primary}{\faNetworkWired}\ Final Project & \textcolor{primary}{\textbf{30\%}} \\
+\textcolor{secondary}{\faComment}\ Peer Review/Reflection & \textcolor{secondary}{\textbf{10\%}} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section*{\faCogs\ Tools and Platforms}
+
+\begin{infobox}[title={\faPython\ Programming \& Analysis}]
+\begin{multicols}{2}
+\textbf{Core Libraries:}
+\begin{itemize}[leftmargin=0em]
+  \item[\textcolor{success}{\faDatabase}] \texttt{pandas}
+  \item[\textcolor{accent}{\faChartLine}] \texttt{matplotlib}
+  \item[\textcolor{warning}{\faChartBar}] \texttt{seaborn} 
+  \item[\textcolor{primary}{\faRobot}] \texttt{scikit-learn}
+  \item[\textcolor{secondary}{\faNetworkWired}] \texttt{networkx}
+\end{itemize}
+
+\columnbreak
+
+\textbf{Platforms:}
+\begin{itemize}[leftmargin=0em]
+  \item[\textcolor{warning}{\faGoogle}] Google Colab
+  \item[\textcolor{accent}{\faLaptop}] Jupyter Notebooks
+\end{itemize}
+
+\textbf{Optional Tools:}
+\begin{itemize}[leftmargin=0em]
+  \item[\textcolor{dark}{\faEye}] Gephi
+  \item[\textcolor{accent}{\faBrain}] PyTorch Geometric
+  \item[\textcolor{success}{\faDatabase}] HuggingFace Datasets
+\end{itemize}
+\end{multicols}
+\end{infobox}
+
+\section*{\faLightbulb\ Example Project Ideas}
+
+\begin{tcolorbox}[
+  colback=white,
+  colframe=accent,
+  arc=3mm,
+  enhanced,
+  drop shadow
+]
+\begin{itemize}
+  \item \textcolor{accent}{\faTwitter}\ Modeling diffusion of memes in Twitter networks
+  \item \textcolor{dark}{\faGithub}\ Link prediction in a GitHub or DBLP collaboration graph  
+  \item \textcolor{secondary}{\faComments}\ Detecting clusters in Discord server graphs
+  \item \textcolor{success}{\faQuoteLeft}\ Visualizing temporal evolution of a citation network
+  \item \textcolor{primary}{\faUsers}\ Combining PCA and community detection for student grouping
+\end{itemize}
+\end{tcolorbox}
+
+\end{document}

@@ -1,21 +1,18 @@
 [build]
-  # Publish the misc directory since that's where our HTML and CSS files are
-  publish = "misc"
+  # Build command for Vite React app
+  command = "npm run build"
+  # Publish the dist directory where Vite outputs the built files
+  publish = "dist"
 
 [build.environment]
-  # No build process needed for static HTML
+  # Node.js version for building
+  NODE_VERSION = "18"
 
 [[redirects]]
-  # Redirect root to outline.html to make it the main page
-  from = "/"
-  to = "/outline.html"
-  status = 200
-
-[[redirects]]
-  # Handle 404s by serving outline.html (optional, for SPA-like behavior)
+  # Handle client-side routing for SPA
   from = "/*"
-  to = "/outline.html"
-  status = 404
+  to = "/index.html"
+  status = 200
 
 [[headers]]
   # Add security headers
@@ -34,5 +31,11 @@
 
 [[headers]]
   for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  # Cache fonts
+  for = "*.woff2"
   [headers.values]
     Cache-Control = "public, max-age=31536000"

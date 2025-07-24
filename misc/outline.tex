@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Course Outline: Social Network Analysis I (SNA-I)}
+\author{Instructor: [Dr. Mudassir Shabbir]}
+\date{Fall Semester, [2025]}
+
+\begin{document}
+
+\maketitle
+
+\section*{Course Overview}
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Level:} 300-level undergraduate
+  \item \textbf{Credits:} 3
+  \item \textbf{Prerequisite:} Algorithms course with grade B- or higher
+  \item \textbf{Eligibility:} Open to undergraduate students. Graduate students may attend informally but cannot take the course for credit.
+  \item \textbf{Schedule:} Lectures will be scheduled within the 11:00 AM -- 2:00 PM window.
+  \item \textbf{Format:} Hands-on lectures, labs, homeworks (front-loaded), group activities, and final project
+\end{itemize}
+
+\section*{Learning Objectives}
+By the end of the course, students will:
+\begin{itemize}
+  \item Understand and apply core concepts in supervised and unsupervised machine learning
+  \item Gain proficiency in Python for machine learning and data analysis
+  \item Model, analyze, and visualize real-world networks using graph theory
+  \item Apply machine learning techniques to network problems such as link prediction and node classification
+  \item Collaborate on applied projects and communicate results effectively
+\end{itemize}
+
+\section*{Weekly Breakdown}
+
+\subsection*{Unit I: Machine Learning Foundations (Weeks 1--6)}
+
+\subsubsection*{Week 1: Python Fundamentals \& Data Handling}
+\begin{itemize}
+  \item Python review, Jupyter/Colab setup
+  \item Using \texttt{pandas} for data cleaning and summaries
+  \item \textbf{Lab:} Clean and summarize a real-world dataset
+  \item \textbf{Homework 1:} Explore and clean a dataset (UCI/Kaggle); compute stats and visualize
+\end{itemize}
+
+\subsubsection*{Week 2: Supervised Learning -- Classification}
+\begin{itemize}
+  \item Train/test splits, decision trees, k-NN
+  \item Accuracy, precision, recall, F1 score
+  \item \textbf{Lab:} Build classifiers on Titanic or similar
+  \item \textbf{Homework 2:} Compare classifiers on a binary classification dataset, include visualizations
+\end{itemize}
+
+\subsubsection*{Week 3: Regression \& Feature Engineering}
+\begin{itemize}
+  \item Linear regression, polynomial regression
+  \item Feature scaling, encoding, binning
+  \item \textbf{Lab:} Predict housing prices with engineered features
+  \item \textbf{Homework 3:} Train a regressor with at least 3 engineered features; evaluate performance
+\end{itemize}
+
+\subsubsection*{Week 4: Model Evaluation \& Pipelines}
+\begin{itemize}
+  \item Cross-validation, bias-variance tradeoff
+  \item \texttt{sklearn} pipelines, reusable components
+  \item \textbf{Lab:} Build and test classification pipelines
+  \item \textbf{Homework 4:} Design a full pipeline with evaluation and visual reporting
+\end{itemize}
+
+\subsubsection*{Week 5: Clustering \& Unsupervised Learning}
+\begin{itemize}
+  \item k-means, hierarchical clustering, silhouette score
+  \item \textbf{Lab:} Cluster student or consumer datasets
+  \item \textbf{Group Activity:} Present clustering results and interpretations
+\end{itemize}
+
+\subsubsection*{Week 6: Dimensionality Reduction}
+\begin{itemize}
+  \item PCA, t-SNE, embeddings intro
+  \item \textbf{Lab:} Visualize projections in 2D
+  \item \textbf{Optional Homework 5:} Apply dimensionality reduction and cluster/visualize results
+\end{itemize}
+
+\subsection*{Unit II: Network Analysis and Graph ML (Weeks 7--14)}
+
+\subsubsection*{Week 7: Introduction to Graphs}
+\begin{itemize}
+  \item Graph terminology, adjacency matrix/list, edge lists
+  \item \textbf{Lab:} Load and visualize networks in \texttt{networkx}
+\end{itemize}
+
+\subsubsection*{Week 8: Centrality Measures}
+\begin{itemize}
+  \item Degree, betweenness, closeness, eigenvector
+  \item \textbf{Lab:} Analyze real-world graphs for key nodes
+\end{itemize}
+
+\subsubsection*{Week 9: Communities \& Subgraphs}
+\begin{itemize}
+  \item Louvain, label propagation, modularity
+  \item \textbf{Lab:} Community detection in ego networks
+\end{itemize}
+
+\subsubsection*{Week 10: Network Diffusion}
+\begin{itemize}
+  \item SI/SIR models, cascade simulations
+  \item \textbf{Lab:} Simulate influence spread in social graphs
+\end{itemize}
+
+\subsubsection*{Week 11: Link Prediction \& Node Classification}
+\begin{itemize}
+  \item Heuristics (Jaccard, Adamic-Adar), ML classifiers
+  \item \textbf{Lab:} Predict edges using logistic regression
+\end{itemize}
+
+\subsubsection*{Week 12: Dynamic Networks}
+\begin{itemize}
+  \item Temporal graphs, snapshots, growth modeling
+  \item \textbf{Lab:} Analyze change over time in collaboration/email networks
+\end{itemize}
+
+\subsubsection*{Weeks 13--14: Final Projects}
+\begin{itemize}
+  \item Student presentations and demos
+  \item \textbf{Deliverables:} Code notebook, slides, 2-page summary
+\end{itemize}
+
+\section*{Assessment Breakdown}
+
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Component} & \textbf{Weight} \\
+\hline
+Homework Assignments (Weeks 1--5) & 35\% \\
+Labs and Participation & 15\% \\
+Group Activities (Weeks 5, 9) & 10\% \\
+Final Project & 30\% \\
+Peer Review/Reflection & 10\% \\
+\hline
+\end{tabular}
+
+\section*{Tools and Platforms}
+\begin{itemize}
+  \item Python: \texttt{pandas}, \texttt{matplotlib}, \texttt{seaborn}, \texttt{scikit-learn}, \texttt{networkx}
+  \item Platforms: Google Colab / Jupyter Notebooks
+  \item Optional: Gephi, PyTorch Geometric, HuggingFace Datasets
+\end{itemize}
+
+\section*{Example Project Ideas}
+\begin{itemize}
+  \item Modeling diffusion of memes in Twitter networks
+  \item Link prediction in a GitHub or DBLP collaboration graph
+  \item Detecting clusters in Discord server graphs
+  \item Visualizing temporal evolution of a citation network
+  \item Combining PCA and community detection for student grouping
+\end{itemize}
+
+\end{document}

@@ -1,35 +1,69 @@
-# Social Network Analysis I (SNA-I) Course Materials
+# React + TypeScript + Vite
 
-This repository contains course materials for the Social Network Analysis I course (Fall 2025).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Course Outline
+Currently, two official plugins are available:
 
-The main course outline is available at `misc/outline.html` and is automatically deployed to Netlify.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Deployment
+## Expanding the ESLint configuration
 
-This site is configured for deployment on Netlify:
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- The main page (`outline.html`) is served from the `misc/` directory
-- Static assets (CSS, images) are cached for optimal performance
-- Security headers are configured for safe browsing
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-## Local Development
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-To view the course outline locally:
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
-1. Open `misc/outline.html` in your web browser
-2. Or serve the files using a local web server:
-   ```bash
-   cd misc
-   python -m http.server 8000
-   ```
-   Then visit `http://localhost:8000/outline.html`
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## Structure
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- `misc/` - Course outline and assets
-  - `outline.html` - Main course outline (HTML version)
-  - `styles.css` - Stylesheet for the course outline
-  - `outline.tex` - LaTeX version of the outline
-- `lec/` - Lecture materials and notebooks
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
